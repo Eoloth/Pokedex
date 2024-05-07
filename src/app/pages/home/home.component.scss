@@ -1,3 +1,5 @@
 #container{
     height: calc(100vh - 140px);
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
 }
