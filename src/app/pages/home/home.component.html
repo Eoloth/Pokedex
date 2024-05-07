@@ -1,12 +1,11 @@
-    <main id="container">
-        <app-foto-pokemon></app-foto-pokemon>
-        <div id="tarjetas-conteiner">
-        <app-tarjeta-pokemon></app-tarjeta-pokemon>
-        <app-tarjeta-pokemon></app-tarjeta-pokemon>
-        <app-tarjeta-pokemon></app-tarjeta-pokemon>
-        <app-tarjeta-pokemon></app-tarjeta-pokemon>
-        <app-tarjeta-pokemon></app-tarjeta-pokemon>
-        <app-tarjeta-pokemon></app-tarjeta-pokemon>
-        <app-tarjeta-pokemon></app-tarjeta-pokemon>
-        </div>
-    </main>
+<main id="container">
+    <app-foto-pokemon>
+    </app-foto-pokemon>
+    <div id="tarjetasContainer">
+    <app-tarjeta-pokemon>
+    </app-tarjeta-pokemon>
+    <img src="./../../../assets/img/spinner.svg" alt="Cargando" id="spinner" *ngIf="cargando">
+    </div>
+
+
+</main>

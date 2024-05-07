@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FotoPokemonComponent } from './../../components/foto-pokemon/foto-pokemon.component';
+import { TarjetaPokemonComponent } from './../../components/tarjeta-pokemon/tarjeta-pokemon.component';
+import { DetalleComponent } from '../../components/detalle/detalle.component';
 import { HomeComponent } from './home.component';
 
 describe('HomeComponent', () => {
