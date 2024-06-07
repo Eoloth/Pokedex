@@ -4,6 +4,6 @@
     <div id="circulo"></div>
     <img [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + id + '.png'" alt="Pokemon">
     <span>No. {{id}}</span>
-    <span *ngIf="data">{{data?.name | titlecase}}</span>
+    <span *ngIf="data">{{data.name | titlecase}}</span>
   </div>
 </div>
