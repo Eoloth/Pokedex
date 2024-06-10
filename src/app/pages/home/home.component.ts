@@ -4,6 +4,7 @@ import { TarjetaPokemonComponent } from './../../components/tarjeta-pokemon/tarj
 import { PokemonService } from '../../services/pokemon.service';
 import { CommonModule, TitleCasePipe } from '@angular/common';
 import { Resultado } from '../../interfaces/pokeapi'; 
+import { Pokemon } from '../../interfaces/pokemon';
 
 @Component({
   selector: 'app-home',
@@ -15,10 +16,9 @@ import { Resultado } from '../../interfaces/pokeapi';
 export class HomeComponent implements OnInit {
 
   cargando: boolean = true;
-
   listaPokemon: Resultado[] = [];
-
   pagina: number = 1; // Inicia la página en 1
+  pokemonSeleccionado?: Pokemon;
 
   constructor(private pokemonService: PokemonService) { }
 
@@ -26,7 +26,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.cargarLista();
-    this.pokemonService.getById('1');
   }
 
   async cargarLista() {
@@ -47,5 +46,10 @@ export class HomeComponent implements OnInit {
         this.cargarLista();
       }
     }
+  }
+
+  async tarjetaClickeada(id: string) {
+    this.pokemonSeleccionado = await this.pokemonService.getById(id);
+    console.log(this.pokemonSeleccionado); // Para verificar que se selecciona el Pokémon correctamente
   }
 }

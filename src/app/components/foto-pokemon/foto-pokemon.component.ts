@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';  // Importa CommonModule
+import { Pokemon } from '../../interfaces/pokemon';
 
 @Component({
   selector: 'app-foto-pokemon',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],  // Añade CommonModule a los imports
   templateUrl: './foto-pokemon.component.html',
-  styleUrl: './foto-pokemon.component.scss'
+  styleUrls: ['./foto-pokemon.component.scss']
 })
 export class FotoPokemonComponent {
-
+  @Input() pokemon?: Pokemon;
 }
