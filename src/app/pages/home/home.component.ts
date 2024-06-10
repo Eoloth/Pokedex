@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.cargarLista();
+    this.pokemonService.getById('1');
   }
 
   async cargarLista() {
