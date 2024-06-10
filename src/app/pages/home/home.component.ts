@@ -14,7 +14,7 @@ import { Resultado } from '../../interfaces/pokeapi';
 })
 export class HomeComponent implements OnInit {
 
-  cargando: boolean = true; // Define la propiedad cargando
+  cargando: boolean = true;
 
   listaPokemon: Resultado[] = [];
 
@@ -29,18 +29,22 @@ export class HomeComponent implements OnInit {
   }
 
   async cargarLista() {
-    this.listaPokemon = [...this.listaPokemon, ...await this.pokemonService.getByPage(this.pagina)];
+    this.cargando = true; // Indicar que se está cargando
+    const nuevosPokemons = await this.pokemonService.getByPage(this.pagina);
+    this.listaPokemon = [...this.listaPokemon, ...nuevosPokemons];
     console.log(this.listaPokemon);
     this.pagina++;
+    this.cargando = false; // Terminar la carga
   }
 
   onScroll(e: any) {
     console.log(e);
-    if (
-      Math.round(
-        this.tarjetasElement.nativeElement.scrollHeight + this.tarjetasElement.nativeElement.scrollTop
-      ) === e.srcElement.clientHeight) {
-      this.cargarLista();
+    const element = e.target;
+    if (element.scrollHeight - element.scrollTop === element.clientHeight) {
+      // Se alcanzó el final del scroll, cargar más
+      if (!this.cargando) { // Evitar cargar múltiples veces simultáneamente
+        this.cargarLista();
+      }
     }
   }
 }
